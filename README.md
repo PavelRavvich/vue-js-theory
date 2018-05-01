@@ -1,2 +1,2 @@
-# view-js-theory
-Theory View JS
+# vue-js-theory
+Theory Vue JS
