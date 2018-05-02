@@ -9,7 +9,7 @@
 <div id="app">
     Инкремент через метод
     <h2>Счетчик: {{ counter }}</h2>
-    <button v-on:click="increment">Увеличить</button>
+    <button v-on:click="increment(1, $event)">Увеличить</button>
     <hr>
 
     Инкремент прямо в аттрибуте
@@ -30,8 +30,11 @@
             counter2: 0
         },
         methods: {
-            increment: function () {
-                this.counter++;
+            increment: function (num, event) {
+                this.counter += num;
+                if (this.counter === 3) {
+                    event.target.style.color = 'red';
+                }
             },
             changeColor: function (event) {
                 event.target.style.color = 'red';
