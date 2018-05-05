@@ -18,6 +18,21 @@
 
     <hr>
     <h2 v-on:mouseover="changeColor">Изменение цвета через метод</h2>
+
+    Модификаторы событий
+    <h2>
+        Отмена стандартного поведения
+        <a href="http://google.com" target="_blank" v-on:click.prevent="">Google</a>
+    </h2>
+
+    <h2 v-on:mousemove="handleMouseMove">
+        X: {{ x }} \ Y: {{ y }}
+        <span v-on:mousemove.stop="">Не изменять</span>
+    </h2>
+
+    <hr>
+    Событие обрабатывается только при нажатии на Enter (Есть много вариантов можно создавать свои)
+    <br><input type="text" v-on:keyup.enter="alertValue">
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -27,7 +42,9 @@
         el: '#app',
         data: {
             counter: 0,
-            counter2: 0
+            counter2: 0,
+            x: 0,
+            y: 0
         },
         methods: {
             increment: function (num, event) {
@@ -38,6 +55,13 @@
             },
             changeColor: function (event) {
                 event.target.style.color = 'red';
+            },
+            handleMouseMove: function (event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            alertValue: function (event) {
+                alert(event.target.value)
             }
         }
     });
