@@ -46,6 +46,12 @@
             :class="color"
     ></div>
     <input type="text" v-model="color">
+
+    <br>
+
+    <div class="circle" :style="cercleClasses"></div>
+    <input type="text" v-model="color">
+    <input type="text" v-model="height">
 </div>
 
 
@@ -57,11 +63,15 @@
         el: '#app',
         data: {
             isActive: false,
-            color: 'blue'
+            color: 'blue',
+            height: 100
         },
         computed: {
             getSccClasses: function () {
                 return this.isActive ? 'red' : 'blue';
+            },
+            cercleClasses: function () {
+                return {'background': this.color, 'height': this.height + 'px'};
             }
         }
     });

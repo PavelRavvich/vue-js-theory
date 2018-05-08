@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+
+<div id="app">
+    v-show стирает элементы из DOM
+    <h2 v-if="isVisible">I'm visible</h2>
+    <h2 v-else>Not visible</h2>
+    <button @click="isVisible = !isVisible">Toggle</button>
+
+    <hr>
+
+    <h2 v-if="type === 'a'">A</h2>
+    <h2 v-else-if="type === 'b'">B</h2>
+    <h2 v-else-if="type === 'c'">C</h2>
+    <h2 v-else>Not match</h2>
+    <br><input type="text" v-model="type">
+
+    <hr>
+    v-show не стирает элементы из DOM
+    <h2 v-show="isVisible">I'm visible</h2>
+    <h2 v-show="!isVisible">Not visible</h2>
+    <button @click="isVisible = !isVisible">Toggle</button>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            isVisible: true,
+            type: 'a'
+        },
+        computed: {
+
+        }
+    });
+</script>
+</body>
+</html>
