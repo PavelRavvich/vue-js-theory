@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+
+<div id="app">
+
+    Two eay binding with v-on(@) and v-bind(:)
+    <input type="text" @input="inputValue = $event.target.value" :value="inputValue">
+
+    <br>
+
+    Two eay binding with v-model
+    <input type="text" v-model="inputValue">
+
+    <br>
+
+    Two eay binding with v-model.lazy optimization
+    <input type="text" v-model.lazy="inputValue">
+
+    <h2>{{ inputValue }}</h2>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            inputValue: 'initial value'
+        }
+    });
+</script>
+</body>
+</html>
