@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+
+<div id="app">
+    <!--Empty. Content in JS side-->
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'hello'
+        },
+        template: '<h2>{{ title }}</h2>'
+    });
+
+</script>
+</body>
+</html>
