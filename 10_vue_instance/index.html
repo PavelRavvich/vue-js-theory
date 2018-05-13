@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue JS</title>
+</head>
+<body>
+
+<div id="app">
+
+    <h2> {{ title }} </h2>
+
+    <h2> {{ newField }} </h2>
+
+</div>
+
+<div id="app2">
+
+    <h2> {{ title2 }} </h2>
+
+    <button @click="updateFirstTitle">Update First Title</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+<script>
+    var vue1 = new Vue({
+        el: '#app',
+        data: {
+            title: 'Title Vue Instance 1'
+        },
+        methods: {
+            someMethod: function () {
+                alert('ALERT!')
+            }
+        }
+    });
+
+    vue1.newField = '';
+
+    new Vue({
+        el: '#app2',
+        data: {
+            title2: 'Title Vue Instance 2'
+        },
+        methods: {
+            updateFirstTitle: function () {
+                vue1.title = 'Update first app';
+                vue1.newField = 'newField';
+                vue1.someMethod();
+            }
+        }
+    });
+</script>
+</body>
+</html>
