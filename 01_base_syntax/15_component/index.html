@@ -17,7 +17,7 @@
 
 <script>
 
-    Vue.component('my-counter', {
+    const component = {
         template: `
             <div>
                 <h2>Counter: {{ counter }}</h2>
@@ -35,12 +35,26 @@
                 this.counter++;
             }
         }
-    });
+    };
+
+    // Глобальная регистрация
+    Vue.component('my-counter', component);
 
     new Vue({
-        el: '#app'
+        el: '#app',
+        // Локальная регистрация как альтернатива Vue.component()
+        components: {
+            'my-counter' : component,
+            // Эквивалентно использование не меняется остается <my-counter>
+            myCounter: component
+        }
     });
 
+    /**
+     * В случае глобальной регистрации имя селектора компонента 'my-counter' будет единым для всех
+     * экземпляров new Vue(). При локальной регистрации это имя можно переиспользовать указав
+     * в объекте components по этому ключу любой другой объект.
+     */
 </script>
 </body>
 </html>
