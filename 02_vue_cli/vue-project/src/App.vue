@@ -1,13 +1,19 @@
 <template>
-    <h1>{{ msg }}</h1>
+    <div>
+        <app-car></app-car>
+        <app-person></app-person>
+    </div>
 </template>
 
 <script>
+    /**
+     * Локальная регистрация компонента.
+     */
+    import Person from './Person.vue';
+
     export default {
-        data() {
-            return {
-                msg: 'Welcome to Your Vue.js App'
-            }
+        components: {
+            appPerson: Person
         }
     }
 </script>
