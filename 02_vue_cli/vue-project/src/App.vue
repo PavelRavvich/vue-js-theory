@@ -6,14 +6,19 @@
         <app-person
             :firstName="firstName"
             :lastName="lastName"
-            :counter="counter"
             :changeFunc="changeNameToPavel"
             @eventName="firstName = $event"
             @counterUpdated="counter = $event"
         >
         </app-person>
-        <app-counter :counter="counter"></app-counter>
+        <app-counter></app-counter>
 
+
+        <hr>
+        <app-slot-example>
+            <h2 slot="title">{{dataForSlot}}</h2>
+            <p slot="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat, quibusdam?</p>
+        </app-slot-example>
     </div>
 </template>
 
@@ -24,12 +29,17 @@
     import Person from './Person.vue';
     import Counter from './Counter.vue';
 
+    /**
+     * Достаем глобально зарегестрированное хранилище событий.
+     */
+    import {eventEmitter} from './main';
+
     export default {
         data() {
             return {
                 firstName: 'Pavel',
                 lastName: 'Ravvich',
-                counter: 0
+                dataForSlot: 'Dynamic data for slot'
             }
         },
         components: {
@@ -41,12 +51,13 @@
                 this.firstName = 'Pavel'
             },
             updateCounter() {
-                this.$emit('counterUpdated', this.counter + 1)
+                // this.$emit('counterUpdated', this.counter + 1)
+                eventEmitter.$emit('counterUpdated')
             }
         }
     }
 </script>
 
-<style>
+<style scoped>
 
 </style>

@@ -9,11 +9,13 @@
 </template>
 
 <script>
+    import {eventEmitter} from './main'
+
     export default {
         /**
          * Три формата для описания ожидаемых значений в props.
          */
-        props: ['firstName', 'lastName', 'changeFunc', 'counter'],
+        props: ['firstName', 'lastName', 'changeFunc'],
         // props: {
         //     firstName: String
         // },
@@ -35,7 +37,8 @@
                 this.$emit('eventName', this.firstName);
             },
             updateCounter() {
-                this.$emit('counterUpdated', this.counter + 1);
+                // this.$emit('counterUpdated', this.counter + 1);
+                eventEmitter.$emit('counterUpdated', 3)
             }
         }
     }
