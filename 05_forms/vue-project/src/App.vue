@@ -58,6 +58,7 @@
     <input type="text" v-model.number="age">
   </div>
   <hr>
+  
   <!-- CUSTOM CONTROLS -->
   <app-on-off v-model="switched"></app-on-off>    
   <div>
