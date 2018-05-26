@@ -1,8 +1,16 @@
 import VueRouter from 'vue-router'
 import Home from './pages/Home'
-import Cars from './pages/Cars'
 import Car from './pages/Car'
+import ErrorCmp from './pages/Error'
 import CarFull from './pages/CarFull'
+
+const Cars = resolve => {
+    require.ensure(['./pages/Cars.vue'], () => {
+        resolve(
+            require('./pages/Cars.vue')
+        )
+    })
+}
 
 export default new VueRouter({
     routes: [{
@@ -11,7 +19,8 @@ export default new VueRouter({
         },
         {
             path: '/cars',
-            component: Cars
+            component: Cars,
+            name: 'cars'
         },
         {
             path: '/car/:id',
@@ -19,8 +28,26 @@ export default new VueRouter({
             children: [{
                 path: 'full',
                 component: CarFull,
-                name: 'carFull'
+                name: 'carFull',
+                beforeEnter(to, from, next) {
+                    console.log('beforeEnter')
+                    if (true) {
+                        next(true);
+                    } else {
+                        next(false);
+                    }
+                }
             }]
+        },
+        {
+            path: '/none',
+            redirect: {
+                name: 'cars'
+            }
+        },
+        {
+            path: '*',
+            component: ErrorCmp
         }
     ],
     mode: 'history',

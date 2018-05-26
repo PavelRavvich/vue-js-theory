@@ -34,6 +34,13 @@
             toCars() {
                 this.$router.push('/cars');
             }
+        },
+        beforeRouteLeave: (to, from, next) => {
+            if (window.confirm('Are you shure?')) {
+                next()
+            } else {
+                next(false);
+            }
         }
     }
 </script>

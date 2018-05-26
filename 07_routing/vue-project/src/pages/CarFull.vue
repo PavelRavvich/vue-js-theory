@@ -18,6 +18,9 @@
             name() {
                 return this.$route.query.name;
             }
+        },
+        beforeRouteEnter: (to, from, next) => {
+            // next() with true or false
         }
     }
 </script>
